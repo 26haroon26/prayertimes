@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prayertimes</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <button onclick="start()" id="firstbtn">Prayer Times Application</button>
+    <div id="firstdiv">
+        <button onclick="Calendar()" id="calendar">Calendar</button>
+
+        <h1>Prayer Times for one day</h1>
+        <form onsubmit="Times(); return false">
+            <input type="text" placeholder="Enter your city" id="citynames">
+            <input type="text" placeholder="Enter your country" id="countrynames">
+            <input type="submit" value="check">
+        </form>
+
+        <div id="citytimes">
+
+            <p id="hijridate"></p>
+            <p id="gregoriandate"></p>
+            <p id="time"></p>
+            <p id="fajr"></p>
+            <p id="sunrise"></p>
+            <p id="zuhur"></p>
+            <p id="asr"></p>
+            <p id="sunset"></p>
+            <p id="maghrib"></p>
+            <p id="esha"></p>
+            <p id="tahajjud"></p>
+        </div>
+    </div>
+
+    <div id="seconddiv">
+
+        <form onsubmit="HijriCalendar(); return false" id="form">
+            <h1>Hijri Calendar for month</h1>
+            <input type="text" placeholder="Enter your city" value="karachi" id="citynames_forcalendar">
+            <input type="text" placeholder="Enter your country" value="Pakistan" id="countrynames_forcalendar">
+            <input type="number" placeholder="Enter month number" value="9" id="monthsnames">
+            <input type="number" placeholder="Enter year number" value="1443" id="yearnames">
+            <input type="submit" value="check">
+        </form>
+        <div id="thirddiv">
+            <table id="table_for_calendar">
+                <thead>
+                    <th colspan="6" id="hijrimonth"></th>
+                    <th colspan="6" id="georgmonth"></th>
+                </thead>
+                <tr id="heading">
+
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        document.getElementById('firstdiv').style.display = "none";
+        document.getElementById('seconddiv').style.display = "none";
+        document.getElementById('calendar').style.display = "none";
+    </script>
+</body>
+
+</html>
