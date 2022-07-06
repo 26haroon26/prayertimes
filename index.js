@@ -7,7 +7,7 @@ function Times() {
     let inp_ut1 = document.getElementById("citynames");
     let inp_ut2 = document.getElementById("countrynames");
 
-    axios.get(`http://api.aladhan.com/v1/timingsByCity?city=${inp_ut1.value}&country=${inp_ut2.value}&method=1`)
+    axios.get(`https://api.aladhan.com/v1/timingsByCity?city=${inp_ut1.value}&country=${inp_ut2.value}&method=1`)
         .then(function (response) {
             document.getElementById('fajr').innerHTML = response.data.data.timings.Fajr;
             document.getElementById('sunrise').innerHTML = response.data.data.timings.Sunrise;
