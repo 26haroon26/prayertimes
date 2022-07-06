@@ -8,6 +8,7 @@ function Times() {
 
     let inp_ut1 = document.getElementById("citynames");
     let inp_ut2 = document.getElementById("countrynames");
+    
 
     axios.get(`https://api.aladhan.com/v1/timingsByCity?city=${inp_ut1.value}&country=${inp_ut2.value}&method=1`)
         .then(function (response) {
@@ -89,5 +90,6 @@ function HijriCalendar() {
 
         }
         )
+        document.getElementById('citytimes').style.display = 'block';
         document.getElementById('form').style.display = "none";
     }
