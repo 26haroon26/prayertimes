@@ -9,7 +9,7 @@ function Times() {
     let inp_ut1 = document.getElementById("citynames");
     let inp_ut2 = document.getElementById("countrynames");
 
-    axios.get(`http://api.aladhan.com/v1/timingsByCity?city=${inp_ut1.value}&country=${inp_ut2.value}&method=1`)
+    axios.get(`https://api.aladhan.com/v1/timingsByCity?city=${inp_ut1.value}&country=${inp_ut2.value}&method=1`)
         .then(function (response) {
             document.getElementById('fajr').innerHTML = "Fajr :" + " " + response.data.data.timings.Fajr;
             document.getElementById('sunrise').innerHTML = "Sunrise :" + " " + response.data.data.timings.Sunrise;
@@ -41,7 +41,7 @@ function HijriCalendar() {
     let inp_ut3 = document.getElementById("monthsnames");
     let inp_ut4 = document.getElementById("yearnames");
 
-    axios.get(`http://api.aladhan.com/v1/hijriCalendarByCity?city=${inp_ut1.value}&country=${inp_ut2.value}&method=1&month=${inp_ut3.value}&year=${inp_ut4.value}`)
+    axios.get(`https://api.aladhan.com/v1/hijriCalendarByCity?city=${inp_ut1.value}&country=${inp_ut2.value}&method=1&month=${inp_ut3.value}&year=${inp_ut4.value}`)
     .then(function (response) {
         console.log(response.data);
         for (let i = 0; i < response.data.data.length; i++) {
