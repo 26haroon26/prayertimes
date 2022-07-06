@@ -26,6 +26,7 @@ function Times() {
         )
     inp_ut1.value = "";
     inp_ut2.value = "";
+    document.getElementById('citytimes').style.display = 'block';
 }
 function Calendar() {
     document.getElementById('seconddiv').style.display = "block";
@@ -90,6 +91,6 @@ function HijriCalendar() {
 
         }
         )
-        document.getElementById('citytimes').style.display = 'block';
+      
         document.getElementById('form').style.display = "none";
     }
