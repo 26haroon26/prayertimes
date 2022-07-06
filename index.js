@@ -1,7 +1,7 @@
 function start() {
     document.getElementById('firstdiv').style.display = "block";
     document.getElementById('calendar').style.display = "block";
-    document.getElementById('firstbtn').style.display = "none";
+ 
 }
 
 function Times() {
