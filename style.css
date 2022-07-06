@@ -1,44 +1,67 @@
 body {
+    background-image: url("../images/background.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-color: #f5f5f5;
     text-align: center;
     padding: 0px;
     margin: 0px;
 }
 
 #table_for_calendar {
-    width: 100%;
-    border-collapse: collapse;
+    margin: 10px auto;
 }
 
+#table_for_calendar :hover {
+    color: white;
+    background-color: #87b3cb;
+    border: 1px solid #FEFE3A;
+    transition: 0.5s;
+}
+
+
 #table_for_calendar td {
-    border: 1px solid #000;
+    border: 1px solid white;
+    border-radius: 10px;
     padding: 5px;
-    background-color: rgb(154, 11, 11);
-    color: beige;
+    background-color: #FEFE3A;
+    color: #000;
+    font-size: bold;
 }
-#table{
-    width: 100%;
-}
-#table_for_calendar thead {
-    border: 1px solid rgb(154, 11, 11);
+
+#table_for_calendar thead th {
+    border: 1px solid white;
+    border-radius: 10px;
     padding: 5px;
     font-size: larger;
-    /* width: 100; */
     font-style: italic;
     font-weight: bolder;
     background-color: #000;
     color: #fff;
-}#thirddiv{
-    width: 100vw;
-    height: 100%;
+}
+
+#thirddiv {
+    /* border: 1px solid white; */
+    margin: 0% 8% 0% 5%;
+    width: 90%;
 }
 
 #heading {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     text-align: center;
     /* width: 100vw; */
     color: black;
     background-color: #4CAF50;
     padding: 5px;
+}
+
+#heading th {
+    border: 1px solid black;
+    color: white;
+    font-size: medium !important;
+    border-radius: 10px;
 }
 
 input,
@@ -48,15 +71,44 @@ input,
     border: 1px solid black;
     border-radius: 10px;
     padding: 5px;
-    background-color: rgb(226, 226, 161);
+    background-color: #FEFE3A;
     color: black;
 }
-#calendar {
- margin: 10px auto;
+
+#calendar,
+#firstbtn {
+    margin: 10px auto;
+}
+#calendar:hover ,input:hover  {
+    color: white;
+    background-color: #87b3cb;
+    border: 1px solid #FEFE3A;
+    transition: 0.5s;
 }
 
-#firstbtn {
-    height: 60px;
-    width: 25%;
-    margin: 20% 20%;
+.flex {
+    display: flex;
+    flex-direction: row;
+    margin: 10px auto;
+    width: 50%;
+    border-radius: 10px;
+    justify-content: space-evenly;
+}
+
+.flex :hover {
+    color: white;
+    background-color: rgb(136, 134, 134);
+    border: 1px solid #FEFE3A;
+    transition: 0.5s;
+}
+
+.flex p {
+    background-color: #FEFE3A;
+    width: 120px;
+    font-weight: bold;
+
+    margin-top: 10px;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    padding: 10px;
 }
