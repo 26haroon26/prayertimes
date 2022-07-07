@@ -12,6 +12,8 @@ function Times() {
 
     axios.get(`https://api.aladhan.com/v1/timingsByCity?city=${inp_ut1.value}&country=${inp_ut2.value}&method=1`)
         .then(function (response) {
+            document.getElementById('hijridate').innerHTML =  response.data.data.date.gregorian.date + " " + response.data.data.date.gregorian.designation.abbreviated;
+            document.getElementById('gregoriandate').innerHTML =  response.data.data.date.hijri.date + " " + response.data.data.date.hijri.designation.abbreviated;
             document.getElementById('fajr').innerHTML =  response.data.data.timings.Fajr;
             document.getElementById('sunrise').innerHTML =  response.data.data.timings.Sunrise;
             document.getElementById('zuhur').innerHTML =  response.data.data.timings.Dhuhr;
@@ -20,8 +22,6 @@ function Times() {
             document.getElementById('maghrib').innerHTML =  response.data.data.timings.Maghrib;
             document.getElementById('esha').innerHTML =  response.data.data.timings.Isha;
             document.getElementById('tahajjud').innerHTML = response.data.data.timings.Midnight;
-            document.getElementById('hijridate').innerHTML =  response.data.data.date.gregorian.date + " " + response.data.data.date.gregorian.designation.abbreviated;
-            document.getElementById('gregoriandate').innerHTML =  response.data.data.date.hijri.date + " " + response.data.data.date.hijri.designation.abbreviated;
         }
         )
     inp_ut1.value = "";
