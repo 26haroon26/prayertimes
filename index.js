@@ -21,7 +21,6 @@ function Times() {
             document.getElementById('sunset').innerHTML =  response.data.data.timings.Sunset;
             document.getElementById('maghrib').innerHTML =  response.data.data.timings.Maghrib;
             document.getElementById('esha').innerHTML =  response.data.data.timings.Isha;
-            document.getElementById('tahajjud').innerHTML = response.data.data.timings.Midnight;
         }
         )
     inp_ut1.value = "";
