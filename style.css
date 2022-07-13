@@ -9,6 +9,9 @@ body {
     padding: 0px;
     margin: 0px;
 }
+.out {
+    display: none;
+}
 
 #table_for_calendar {
     margin: 10px auto;
@@ -43,15 +46,12 @@ body {
 }
 
 #thirddiv {
-    /* border: 1px solid white; */
     margin: 0% 8% 0% 5%;
     width: 90%;
 }
 
 #heading {
-    /* border: 1px solid black; */
     text-align: center;
-    /* width: 100vw; */
     color: black;
     background-color: #4CAF50;
     padding: 5px;
@@ -63,10 +63,12 @@ body {
     font-size: medium !important;
     border-radius: 10px;
 }
-
 input,
-#firstbtn,
-#calendar {
+.firstbtn,
+#calendar,#prayer_times,
+#Audio_Ayat,
+#Audio_Surah,
+select {
     text-align: center;
     border: 1px solid black;
     border-radius: 10px;
@@ -75,15 +77,35 @@ input,
     color: black;
 }
 
-#calendar,
-#firstbtn {
+#calendar,#prayer_times,
+#Audio_Ayat,
+#Audio_Surah
+ {
     margin: 10px auto;
 }
-#calendar:hover ,input:hover  {
+
+#calendar:hover,#prayer_times:hover,
+#Audio_Ayat:hover,
+#Audio_Surah:hover,
+input:hover:hover,
+select:hover {
     color: white;
     background-color: #87b3cb;
     border: 1px solid #FEFE3A;
     transition: 0.5s;
+}
+
+.flex2 p:hover,.surah_flex p:hover,
+#surahtext >audio:hover,
+#surahtext >p:hover,
+#surahtext >div:hover,
+#text:hover,
+#show-audio>audio:hover {
+    color: white;
+    background-color: #87b3cb;
+    transition: 0.5s;
+}h1{
+    color: white;
 }
 
 .flex {
@@ -106,9 +128,84 @@ input,
     background-color: #FEFE3A;
     width: 120px;
     font-weight: bold;
-
     margin-top: 10px;
-    /* border: 1px solid black; */
     border-radius: 10px;
     padding: 10px;
+}
+
+.flex2 ,.surah_flex {
+    width: 50%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: row;
+    color: black;
+    justify-content: space-evenly;
+}
+
+.flex2>p,.surah_flex>p {
+    background-color: #FEFE3A;
+    width: 150px;
+    margin-right: 2%;
+    height: 30px;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+#text {
+    width: 50%;
+    margin: 10px auto;
+    padding: 20px;
+    color: black;
+    font-size: x-large;
+    border-radius: 10px;
+    background-color: #FEFE3A;
+}
+
+#show-audio>audio {
+    color: #FEFE3A;
+    border: 2px solid black;
+    background-color: #FEFE3A;
+    border-radius: 10px;
+    padding: 5px;
+    height: 50px;
+}
+
+#main_surah {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin: 10px auto;
+
+}
+ #show-audio_surah{
+    width: 50%;
+    margin: 10px auto;
+}#surahtext{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}#surahtext >audio{
+    color: black;
+    margin-right: 5px;
+    border-radius: 10px;
+    padding: 2px;
+    background-color: #FEFE3A; 
+    width: 220px;
+    height: 40px;
+}#surahtext >p {
+    margin-right: 5px;
+    height: 40px;
+    padding: 2px;
+    border-radius: 10px;
+    background-color: #FEFE3A;
+    margin-top: 0px;
+    width: 250px;
+}#surahtext >div{
+    height: 40px;
+    border-radius: 10px;
+    padding: 2px;
+    background-color: #FEFE3A;
+    width: 20px;
 }

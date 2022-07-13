@@ -10,10 +10,12 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="index.js"></script>
 </head>
-
-<body onload="start()">
-    <div id="firstdiv">
-        <button onclick="Calendar()" id="calendar">Calendar</button>
+<body>
+    <button onclick="prayer_times()" class="firstbtn">Prayer Times</button>
+    <button onclick="Calendar()" class="firstbtn">Calendar</button>
+    <button onclick="Audio_Ayat()" class="firstbtn">Audio Ayat</button>
+    <button onclick="Audio_Surah()" class="firstbtn">Audio Surat</button>
+    <div id="firstdiv" class="out">
 
         <h1>Prayer Times for one day</h1>
         <form onsubmit="Times(); return false" id="firstform">
@@ -21,53 +23,54 @@
             <input type="text" placeholder="Enter your country" id="countrynames">
             <input type="submit" value="check">
         </form>
+    </div>
 
-        <div id="citytimes">
 
-            <div class="flex">
-                <p>Hijridate</p>
-                <p id="hijridate"></p>
-            </div>
-            <div class="flex">
-                <p>Gregoriandate</p>
-                <p id="gregoriandate"></p>
-            </div>
-            <!-- <div class="flex"> -->
-            <!-- <p>Time</p>
+    <div id="citytimes" class="out">
+
+        <div class="flex">
+            <p>Hijridate</p>
+            <p id="hijridate"></p>
+        </div>
+        <div class="flex">
+            <p>Gregoriandate</p>
+            <p id="gregoriandate"></p>
+        </div>
+        <!-- <div class="flex"> -->
+        <!-- <p>Time</p>
             <p id="time"></p>
             </div> -->
-            <div class="flex">
-                <p>Fajr</p>
-                <p id="fajr"></p>
-            </div>
-            <div class="flex">
-                <p>Sunrise</p>
-                <p id="sunrise"></p>
-            </div>
-            <div class="flex">
-                <p>Zuhur</p>
-                <p id="zuhur"></p>
-            </div>
-            <div class="flex">
-                <p>Asr</p>
-                <p id="asr"></p>
-            </div>
-            <div class="flex">
-                <p>Sunset</p>
-                <p id="sunset"></p>
-            </div>
-            <div class="flex">
-                <p>Maghrib</p>
-                <p id="maghrib"></p>
-            </div>
-            <div class="flex">
-                <p>Isha</p>
-                <p id="esha"></p>
-            </div>
+        <div class="flex">
+            <p>Fajr</p>
+            <p id="fajr"></p>
+        </div>
+        <div class="flex">
+            <p>Sunrise</p>
+            <p id="sunrise"></p>
+        </div>
+        <div class="flex">
+            <p>Zuhur</p>
+            <p id="zuhur"></p>
+        </div>
+        <div class="flex">
+            <p>Asr</p>
+            <p id="asr"></p>
+        </div>
+        <div class="flex">
+            <p>Sunset</p>
+            <p id="sunset"></p>
+        </div>
+        <div class="flex">
+            <p>Maghrib</p>
+            <p id="maghrib"></p>
+        </div>
+        <div class="flex">
+            <p>Isha</p>
+            <p id="esha"></p>
         </div>
     </div>
 
-    <div id="seconddiv">
+    <div id="seconddiv" class="out">
 
         <form onsubmit="HijriCalendar(); return false" id="form">
             <h1>Hijri Calendar for month</h1>
@@ -77,18 +80,19 @@
             <input type="number" placeholder="Enter year number" value="1443" id="yearnames">
             <input type="submit" value="check">
         </form>
-        <div id="thirddiv">
-            <table id="table_for_calendar">
-                <thead>
-                    <th colspan="6" id="hijrimonth"></th>
-                    <th colspan="6" id="georgmonth"></th>
-                </thead>
-                <tr id="heading">
-
-                </tr>
-            </table>
-        </div>
     </div>
+    <div id="thirddiv" class="out">
+        <table id="table_for_calendar">
+            <thead>
+                <th colspan="6" id="hijrimonth"></th>
+                <th colspan="6" id="georgmonth"></th>
+            </thead>
+            <tr id="heading">
+
+            </tr>
+        </table>
+    </div>
+
     <!-- <div id="for_direction">
         <form onsubmit="asma_ul_husna(); return false">
             <input type="number" placeholder="">
@@ -96,12 +100,89 @@
         </form>
         <section id="mainasma">
             <div></div> -->
-    
+
+    <div id="audio_ayah" class="out">
+        <h1>Audio Ayat</h1>
+        <input type="number" id="ayat_number" value="262" placeholder="1-6236">
+        <select id="Ayah">
+            <option value="ar.abdulbasitmurattal">Abdul-Basit</option>
+            <option value="ar.abdullahbasfar">Abdullah-Basfar</option>
+            <option value="ar.abdulsamad">Abdul-Samad</option>
+            <option value="ar.abdurrahmaansudais">Abdur-Rahmaan-Sudais</option>
+            <option value="ar.ahmedajamy">Ahmed-Ajamy</option>
+            <option value="ar.alafasy">Al-Afasy</option>
+            <option value="ar.aymanswoaid">Ayman-Swoaid</option>
+            <option value="ar.hanirifai">Hani-Rifai</option>
+            <option value="ar.hudhaify">Hudhaify</option>
+            <option value="ar.husary">Husary</option>
+            <option value="ar.husarymujawwad">Husary-Mujawwad</option>
+            <option value="ar.mahermuaiqly">Maher-Muaiqly</option>
+            <option value="ar.minshawimujawwad">Minshawimu-Jawwad</option>
+            <option value="ar.saoodshuraym">Saood-Shuraym</option>
+            <option value="ar.shaatree">Shaatree</option>
+            <option value="ur.khan">Khan</option>
+        </select>
+        <input type="button" value="Ayah" onclick="AudioAyah()">
     </div>
-    <script>
-        document.getElementById('citytimes').style.display = 'none';
-        document.getElementById('seconddiv').style.display = 'none';
-    </script>
+    <div class="out" id="audio-ayah">
+        <div class="flex2">
+            <p id="ayatnum"></p>
+            <p id="rukunum"></p>
+            <p id="suratname"></p>
+        </div>
+        <div class="flex2">
+            <p id="suratnum"></p>
+            <p id="numofsurah"></p>
+            <p id="revelation"></p>
+        </div>
+        <div class="flex2">
+            <p id="para"></p>
+            <p id="manzil"></p>
+        </div>
+        <div id="show-audio">
+        </div>
+        <p id="text"></p>
+        <div id="audio_surah">
+        </div>
+    </div>
+    <div class="out" id="audio-surah">
+        <h1>Audio Surah</h1>
+        <input type="number" id="surah_number" value="114" placeholder="1-114">
+        <select id="Surah">
+            <option value="ar.abdulbasitmurattal">Abdul-Basit</option>
+            <option value="ar.abdullahbasfar">Abdullah-Basfar</option>
+            <option value="ar.abdulsamad">Abdul-Samad</option>
+            <option value="ar.abdurrahmaansudais">Abdur-Rahmaan-Sudais</option>
+            <option value="ar.ahmedajamy">Ahmed-Ajamy</option>
+            <option value="ar.alafasy">Al-Afasy</option>
+            <option value="ar.aymanswoaid">Ayman-Swoaid</option>
+            <option value="ar.hanirifai">Hani-Rifai</option>
+            <option value="ar.hudhaify">Hudhaify</option>
+            <option value="ar.husary">Husary</option>
+            <option value="ar.husarymujawwad">Husary-Mujawwad</option>
+            <option value="ar.mahermuaiqly">Maher-Muaiqly</option>
+            <option value="ar.minshawimujawwad">Minshawimu-Jawwad</option>
+            <option value="ar.saoodshuraym">Saood-Shuraym</option>
+            <option value="ar.shaatree">Shaatree</option>
+            <option value="ur.khan">Khan</option>
+        </select>
+        <input type="button" value="Surah" onclick="AudioSurah()">
+    </div>
+    <div id="main_for_surah" class="out">
+        <div class="surah_flex">
+            <p id="surah_name"></p>
+            <p id="surah_num"></p>
+        </div>
+        <div class="surah_flex">
+            <p id="ayats_of_surah"></p>
+            <p id="revelation_of_surah"></p>
+        </div>
+        <div id="main_surah">
+            <div id="show-audio_surah">
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
