@@ -192,17 +192,18 @@ function AudioSurah() {
     select.value = "";
     showaudiosurah.value = "";
 }
-// function direction() {
+function direction() {
     let maindiv = document.getElementById('main');
     let qibla_direction = document.getElementById('qiblaimage');
     axios.get(`http://api.aladhan.com/v1/qibla/25.4106386/51.1846025`)
             .then(function (response) {
                 console.log(response.data);
                 maindiv.innerHTML = ` <div id="qiblaimage" style="transform: rotate(${response.data.data.direction +"deg"});">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDfwUgPMMXfM3SU6gnjWRL8sxEmXZKqMzeJQ&usqp=CAU">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDfwUgPMMXfM3SU6gnjWRL8sxEmXZKqMzeJQ&usqp=CAU" width="50px">
             </div>`
+
                    
 }
 )
-// }
+}
 

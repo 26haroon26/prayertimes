@@ -1,197 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>prayertimes</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="index.js"></script>
-</head>
-<body>
-    <button onclick="prayer_times()" class="firstbtn">Prayer Times</button>
-    <button onclick="Calendar()" class="firstbtn">Calendar</button>
-    <button onclick="Audio_Ayat()" class="firstbtn">Audio Ayat</button>
-    <button onclick="Audio_Surah()" class="firstbtn">Audio Surat</button>
-    <div id="firstdiv" class="out">
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
 
-        <h1>Prayer Times for one day</h1>
-        <form onsubmit="Times(); return false" id="firstform">
-            <input type="text" placeholder="Enter your city" id="citynames">
-            <input type="text" placeholder="Enter your country" id="countrynames">
-            <input type="submit" value="check">
-        </form>
-    </div>
+    <div class="swiper mySwiper">
+        <div class="MainDiv">
+          <div class="btnsDiv">
 
-
-    <div id="citytimes" class="out">
-
-        <div class="flex">
-            <p>Hijridate</p>
-            <p id="hijridate"></p>
-        </div>
-        <div class="flex">
-            <p>Gregoriandate</p>
-            <p id="gregoriandate"></p>
-        </div>
-        <!-- <div class="flex"> -->
-        <!-- <p>Time</p>
-            <p id="time"></p>
-            </div> -->
-        <div class="flex">
-            <p>Fajr</p>
-            <p id="fajr"></p>
-        </div>
-        <div class="flex">
-            <p>Sunrise</p>
-            <p id="sunrise"></p>
-        </div>
-        <div class="flex">
-            <p>Zuhur</p>
-            <p id="zuhur"></p>
-        </div>
-        <div class="flex">
-            <p>Asr</p>
-            <p id="asr"></p>
-        </div>
-        <div class="flex">
-            <p>Sunset</p>
-            <p id="sunset"></p>
-        </div>
-        <div class="flex">
-            <p>Maghrib</p>
-            <p id="maghrib"></p>
-        </div>
-        <div class="flex">
-            <p>Isha</p>
-            <p id="esha"></p>
-        </div>
-    </div>
-
-    <div id="seconddiv" class="out">
-
-        <form onsubmit="HijriCalendar(); return false" id="form">
-            <h1>Hijri Calendar for month</h1>
-            <input type="text" placeholder="Enter your city" value="karachi" id="citynames_forcalendar">
-            <input type="text" placeholder="Enter your country" value="Pakistan" id="countrynames_forcalendar">
-            <input type="number" placeholder="Enter month number" value="9" id="monthsnames">
-            <input type="number" placeholder="Enter year number" value="1443" id="yearnames">
-            <input type="submit" value="check">
-        </form>
-    </div>
-    <div id="thirddiv" class="out">
-        <table id="table_for_calendar">
-            <thead>
-                <th colspan="6" id="hijrimonth"></th>
-                <th colspan="6" id="georgmonth"></th>
-            </thead>
-            <tr id="heading">
-
-            </tr>
-        </table>
-    </div>
-
-    <!-- <div id="for_direction">
-        <form onsubmit="asma_ul_husna(); return false">
-            <input type="number" placeholder="">
-            <input type="submit" value="Asma-Ul-Husna">
-        </form>
-        <section id="mainasma">
-            <div></div> -->
-
-    <div id="audio_ayah" class="out">
-        <h1>Audio Ayat</h1>
-        <input type="number" id="ayat_number" value="262" placeholder="1-6236">
-        <select id="Ayah">
-            <option value="ar.abdulbasitmurattal">Abdul-Basit</option>
-            <option value="ar.abdullahbasfar">Abdullah-Basfar</option>
-            <option value="ar.abdulsamad">Abdul-Samad</option>
-            <option value="ar.abdurrahmaansudais">Abdur-Rahmaan-Sudais</option>
-            <option value="ar.ahmedajamy">Ahmed-Ajamy</option>
-            <option value="ar.alafasy">Al-Afasy</option>
-            <option value="ar.aymanswoaid">Ayman-Swoaid</option>
-            <option value="ar.hanirifai">Hani-Rifai</option>
-            <option value="ar.hudhaify">Hudhaify</option>
-            <option value="ar.husary">Husary</option>
-            <option value="ar.husarymujawwad">Husary-Mujawwad</option>
-            <option value="ar.mahermuaiqly">Maher-Muaiqly</option>
-            <option value="ar.minshawimujawwad">Minshawimu-Jawwad</option>
-            <option value="ar.saoodshuraym">Saood-Shuraym</option>
-            <option value="ar.shaatree">Shaatree</option>
-            <option value="ur.khan">Khan</option>
-        </select>
-        <input type="button" value="Ayah" onclick="AudioAyah()">
-    </div>
-    <div class="out" id="audio-ayah">
-        <div class="flex2">
-            <p id="ayatnum"></p>
-            <p id="rukunum"></p>
-            <p id="suratname"></p>
-        </div>
-        <div class="flex2">
-            <p id="suratnum"></p>
-            <p id="numofsurah"></p>
-            <p id="revelation"></p>
-        </div>
-        <div class="flex2">
-            <p id="para"></p>
-            <p id="manzil"></p>
-        </div>
-        <div id="show-audio">
-        </div>
-        <p id="text"></p>
-        <div id="audio_surah">
-        </div>
-    </div>
-    <div class="out" id="audio-surah">
-        <h1>Audio Surah</h1>
-        <input type="number" id="surah_number" value="114" placeholder="1-114">
-        <select id="Surah">
-            <option value="ar.abdulbasitmurattal">Abdul-Basit</option>
-            <option value="ar.abdullahbasfar">Abdullah-Basfar</option>
-            <option value="ar.abdulsamad">Abdul-Samad</option>
-            <option value="ar.abdurrahmaansudais">Abdur-Rahmaan-Sudais</option>
-            <option value="ar.ahmedajamy">Ahmed-Ajamy</option>
-            <option value="ar.alafasy">Al-Afasy</option>
-            <option value="ar.aymanswoaid">Ayman-Swoaid</option>
-            <option value="ar.hanirifai">Hani-Rifai</option>
-            <option value="ar.hudhaify">Hudhaify</option>
-            <option value="ar.husary">Husary</option>
-            <option value="ar.husarymujawwad">Husary-Mujawwad</option>
-            <option value="ar.mahermuaiqly">Maher-Muaiqly</option>
-            <option value="ar.minshawimujawwad">Minshawimu-Jawwad</option>
-            <option value="ar.saoodshuraym">Saood-Shuraym</option>
-            <option value="ar.shaatree">Shaatree</option>
-            <option value="ur.khan">Khan</option>
-        </select>
-        <input type="button" value="Surah" onclick="AudioSurah()">
-    </div>
-    <div id="main_for_surah" class="out">
-        <div class="surah_flex">
-            <p id="surah_name"></p>
-            <p id="surah_num"></p>
-        </div>
-        <div class="surah_flex">
-            <p id="ayats_of_surah"></p>
-            <p id="revelation_of_surah"></p>
-        </div>
-        <div id="main_surah">
-            <div id="show-audio_surah">
+            <button onclick="prayer_times()" class="firstbtn">Prayer Times</button>
+            <button onclick="Calendar()" class="firstbtn">Calendar</button>
+            <button onclick="Audio_Ayat()" class="firstbtn">Audio Ayat</button>
+            <button onclick="Audio_Surah()" class="firstbtn">Audio Surat</button>
+          </div>
+            <div id="firstdiv" class="out">
+              <h1>Prayer Times for one day</h1>
+              <form onsubmit="Times(); return false" id="firstform">
+                <input type="text" placeholder="Enter your city" id="citynames" />
+                <input type="text" placeholder="Enter your country" id="countrynames" />
+                <input type="submit" value="check" />
+              </form>
             </div>
-        </div>
+        
+            <div id="citytimes" class="out">
+              <div class="flex">
+                <p>Hijridate</p>
+                <p id="hijridate"></p>
+              </div>
+              <div class="flex">
+                <p>Gregoriandate</p>
+                <p id="gregoriandate"></p>
+              </div>
+              <div class="flex">
+                <p>Fajr</p>
+                <p id="fajr"></p>
+              </div>
+              <div class="flex">
+                <p>Sunrise</p>
+                <p id="sunrise"></p>
+              </div>
+              <div class="flex">
+                <p>Zuhur</p>
+                <p id="zuhur"></p>
+              </div>
+              <div class="flex">
+                <p>Asr</p>
+                <p id="asr"></p>
+              </div>
+              <div class="flex">
+                <p>Sunset</p>
+                <p id="sunset"></p>
+              </div>
+              <div class="flex">
+                <p>Maghrib</p>
+                <p id="maghrib"></p>
+              </div>
+              <div class="flex">
+                <p>Isha</p>
+                <p id="esha"></p>
+              </div>
+            </div>
+        
+            <div id="seconddiv" class="out">
+              <form onsubmit="HijriCalendar(); return false" id="form">
+                <h1>Hijri Calendar for month</h1>
+                <input
+                  type="text"
+                  placeholder="Enter your city"
+                  value="karachi"
+                  id="citynames_forcalendar"
+                />
+                <input
+                  type="text"
+                  placeholder="Enter your country"
+                  value="Pakistan"
+                  id="countrynames_forcalendar"
+                />
+                <input
+                  type="number"
+                  placeholder="Enter month number"
+                  value="9"
+                  id="monthsnames"
+                />
+                <input
+                  type="number"
+                  placeholder="Enter year number"
+                  value="1443"
+                  id="yearnames"
+                />
+                <input type="submit" value="check" />
+              </form>
+            </div>
+            <div id="thirddiv" class="out">
+              <table id="table_for_calendar">
+                <thead>
+                  <th colspan="6" id="hijrimonth"></th>
+                  <th colspan="6" id="georgmonth"></th>
+                </thead>
+                <tr id="heading"></tr>
+              </table>
+            </div>
+        
+            <!-- <div id="for_direction">
+                <form onsubmit="asma_ul_husna(); return false">
+                    <input type="number" placeholder="">
+                    <input type="submit" value="Asma-Ul-Husna">
+                </form>
+                <section id="mainasma">
+                    <div></div> -->
+        
+            <div id="audio_ayah" class="out">
+              <h1>Audio Ayat</h1>
+              <input type="number" id="ayat_number" value="262" placeholder="1-6236" />
+              <select id="Ayah">
+                <option value="ar.abdulbasitmurattal">Abdul-Basit</option>
+                <option value="ar.abdullahbasfar">Abdullah-Basfar</option>
+                <option value="ar.abdulsamad">Abdul-Samad</option>
+                <option value="ar.abdurrahmaansudais">Abdur-Rahmaan-Sudais</option>
+                <option value="ar.ahmedajamy">Ahmed-Ajamy</option>
+                <option value="ar.alafasy">Al-Afasy</option>
+                <option value="ar.aymanswoaid">Ayman-Swoaid</option>
+                <option value="ar.hanirifai">Hani-Rifai</option>
+                <option value="ar.hudhaify">Hudhaify</option>
+                <option value="ar.husary">Husary</option>
+                <option value="ar.husarymujawwad">Husary-Mujawwad</option>
+                <option value="ar.mahermuaiqly">Maher-Muaiqly</option>
+                <option value="ar.minshawimujawwad">Minshawimu-Jawwad</option>
+                <option value="ar.saoodshuraym">Saood-Shuraym</option>
+                <option value="ar.shaatree">Shaatree</option>
+                <option value="ur.khan">Khan</option>
+              </select>
+              <input type="button" value="Ayah" onclick="AudioAyah()" />
+            </div>
+            <div class="out" id="audio-ayah">
+              <div class="flex2">
+                <p id="ayatnum"></p>
+                <p id="rukunum"></p>
+                <p id="suratname"></p>
+              </div>
+              <div class="flex2">
+                <p id="suratnum"></p>
+                <p id="numofsurah"></p>
+                <p id="revelation"></p>
+              </div>
+              <div class="flex2">
+                <p id="para"></p>
+                <p id="manzil"></p>
+              </div>
+              <div id="show-audio"></div>
+              <p id="text"></p>
+              <div id="audio_surah"></div>
+            </div>
+            <div class="out" id="audio-surah">
+              <h1>Audio Surah</h1>
+              <input type="number" id="surah_number" value="114" placeholder="1-114" />
+              <select id="Surah">
+                <option value="ar.abdulbasitmurattal">Abdul-Basit</option>
+                <option value="ar.abdullahbasfar">Abdullah-Basfar</option>
+                <option value="ar.abdulsamad">Abdul-Samad</option>
+                <option value="ar.abdurrahmaansudais">Abdur-Rahmaan-Sudais</option>
+                <option value="ar.ahmedajamy">Ahmed-Ajamy</option>
+                <option value="ar.alafasy">Al-Afasy</option>
+                <option value="ar.aymanswoaid">Ayman-Swoaid</option>
+                <option value="ar.hanirifai">Hani-Rifai</option>
+                <option value="ar.hudhaify">Hudhaify</option>
+                <option value="ar.husary">Husary</option>
+                <option value="ar.husarymujawwad">Husary-Mujawwad</option>
+                <option value="ar.mahermuaiqly">Maher-Muaiqly</option>
+                <option value="ar.minshawimujawwad">Minshawimu-Jawwad</option>
+                <option value="ar.saoodshuraym">Saood-Shuraym</option>
+                <option value="ar.shaatree">Shaatree</option>
+                <option value="ur.khan">Khan</option>
+              </select>
+              <input type="button" value="Surah" onclick="AudioSurah()" />
+            </div>
+            <div id="main_for_surah" class="out">
+              <div class="surah_flex">
+                <p id="surah_name"></p>
+                <p id="surah_num"></p>
+              </div>
+              <div class="surah_flex">
+                <p id="ayats_of_surah"></p>
+                <p id="revelation_of_surah"></p>
+              </div>
+              <div id="main_surah">
+                <div id="show-audio_surah"></div>
+              </div>
+            </div>
+            <form class="checkbtn">
+              <input type="button" onclick="direction()" value="check" />
+            </form>
+            <div id="main">
+              
+              <div id="qiblaimage">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDfwUgPMMXfM3SU6gnjWRL8sxEmXZKqMzeJQ&usqp=CAU"
+                  width="50px"
+                />
+              </div>
+            
+            </div>
+        
+         </div>
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="./images/1.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="./images/2.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="./images/3.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="./images/4.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="./images/5.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="./images/6.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="./images/7.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="./images/8.jpg" alt=""></div>
+        <div class="swiper-slide"><img src="./images/9.jpg" alt=""></div>
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
     </div>
-<!--  <form >
-    <input type="button" onclick="direction()" value="check">
-
- </form>
-    <div id="main">
-        ` <div id="qiblaimage">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDfwUgPMMXfM3SU6gnjWRL8sxEmXZKqMzeJQ&usqp=CAU">
-        </div>`
-    </div>    -->
-
-</body>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        effect: "fade",
+        fadeEffect: {
+            crossFade: true
+        },
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        // pagination: {
+        //   el: ".swiper-pagination",
+        //   clickable: true,
+        // },
+        // navigation: {
+        //   nextEl: ".swiper-button-next",
+        //   prevEl: ".swiper-button-prev",
+        // },
+      });
+    </script>
+  </body>
 </html>
