@@ -18,9 +18,11 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
-
-    <div class="swiper mySwiper">
+  <body onload="hideloader()">
+    <div id="preloader">
+      <div id="loader"></div>
+    </div>
+   <div class="swiper mySwiper" id="afterloader">
         <div class="MainDiv">
           <div class="btnsDiv">
 
@@ -28,12 +30,13 @@
             <button onclick="Calendar()" class="firstbtn">Calendar</button>
             <button onclick="Audio_Ayat()" class="firstbtn">Audio Ayat</button>
             <button onclick="Audio_Surah()" class="firstbtn">Audio Surat</button>
+            <button onclick="Qibla()" class="firstbtn">Qibla</button>
           </div>
             <div id="firstdiv" class="out">
               <h1>Prayer Times for one day</h1>
               <form onsubmit="Times(); return false" id="firstform">
-                <input type="text" placeholder="Enter your city" id="citynames" />
-                <input type="text" placeholder="Enter your country" id="countrynames" />
+                <input type="text" placeholder="Enter your city" id="citynames" required/>
+                <input type="text" placeholder="Enter your country" id="countrynames" required />
                 <input type="submit" value="check" />
               </form>
             </div>
@@ -84,25 +87,25 @@
                   type="text"
                   placeholder="Enter your city"
                   value="karachi"
-                  id="citynames_forcalendar"
+                  id="citynames_forcalendar" required
                 />
                 <input
                   type="text"
                   placeholder="Enter your country"
                   value="Pakistan"
-                  id="countrynames_forcalendar"
+                  id="countrynames_forcalendar" required
                 />
                 <input
                   type="number"
                   placeholder="Enter month number"
                   value="9"
-                  id="monthsnames"
+                  id="monthsnames" required
                 />
                 <input
                   type="number"
                   placeholder="Enter year number"
                   value="1443"
-                  id="yearnames"
+                  id="yearnames" required
                 />
                 <input type="submit" value="check" />
               </form>
@@ -116,18 +119,11 @@
                 <tr id="heading"></tr>
               </table>
             </div>
-        
-            <!-- <div id="for_direction">
-                <form onsubmit="asma_ul_husna(); return false">
-                    <input type="number" placeholder="">
-                    <input type="submit" value="Asma-Ul-Husna">
-                </form>
-                <section id="mainasma">
-                    <div></div> -->
+       
         
             <div id="audio_ayah" class="out">
               <h1>Audio Ayat</h1>
-              <input type="number" id="ayat_number" value="262" placeholder="1-6236" />
+              <input type="number" id="ayat_number" value="262" placeholder="1-6236" required />
               <select id="Ayah">
                 <option value="ar.abdulbasitmurattal">Abdul-Basit</option>
                 <option value="ar.abdullahbasfar">Abdullah-Basfar</option>
@@ -169,7 +165,7 @@
             </div>
             <div class="out" id="audio-surah">
               <h1>Audio Surah</h1>
-              <input type="number" id="surah_number" value="114" placeholder="1-114" />
+              <input type="number" id="surah_number" value="114" placeholder="1-114"  required/>
               <select id="Surah">
                 <option value="ar.abdulbasitmurattal">Abdul-Basit</option>
                 <option value="ar.abdullahbasfar">Abdullah-Basfar</option>
@@ -203,18 +199,20 @@
                 <div id="show-audio_surah"></div>
               </div>
             </div>
-            <form class="checkbtn">
-              <input type="button" onclick="direction()" value="check" />
-            </form>
-            <div id="main">
-              
+            
+            <div id="main" class="out">
+               <h1>Qibla Direction</h1>
+             <div class="backWhite">
               <div id="qiblaimage">
-                <img
+                <img id="qiblaimage"
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDfwUgPMMXfM3SU6gnjWRL8sxEmXZKqMzeJQ&usqp=CAU"
-                  width="50px"
+                  width="100px"
                 />
               </div>
-            
+             </div>
+              <form class="checkbtn">
+                <input type="button" onclick="direction()" class="qiblabtn" value="check" />
+              </form>
             </div>
         
          </div>
@@ -232,7 +230,8 @@
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
       <div class="swiper-pagination"></div>
-    </div>
+    </div> 
+ 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script>
       var swiper = new Swiper(".mySwiper", {

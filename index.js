@@ -1,18 +1,18 @@
 function prayer_times() {
     document.getElementById('seconddiv').classList.add("out");
+    document.getElementById('main').classList.add("out");
     document.getElementById('audio_ayah').classList.add("out");
     document.getElementById('audio-surah').classList.add("out");
     document.getElementById('citytimes').classList.add("out");
     document.getElementById('thirddiv').classList.add("out");
     document.getElementById('main_for_surah').classList.add("out");
     document.getElementById('audio-ayah').classList.add("out");
-
-
     document.getElementById('firstdiv').classList.remove("out");
 
 
 }
 function Calendar() {
+    document.getElementById('main').classList.add("out");
     document.getElementById('firstdiv').classList.add("out");
     document.getElementById('audio_ayah').classList.add("out");
     document.getElementById('audio-surah').classList.add("out");
@@ -20,7 +20,6 @@ function Calendar() {
     document.getElementById('thirddiv').classList.add("out");
     document.getElementById('main_for_surah').classList.add("out");
     document.getElementById('audio-ayah').classList.add("out");
-
     document.getElementById('seconddiv').classList.remove("out");
     // seconddiv.classList.add("out");
     // audio_ayah.classList.add("out");
@@ -34,12 +33,12 @@ function Calendar() {
 function Audio_Ayat() {
     document.getElementById('firstdiv').classList.add("out");
     document.getElementById('seconddiv').classList.add("out");
+    document.getElementById('main').classList.add("out");
     document.getElementById('audio-surah').classList.add("out");
     document.getElementById('citytimes').classList.add("out");
     document.getElementById('thirddiv').classList.add("out");
     document.getElementById('main_for_surah').classList.add("out");
     document.getElementById('audio-ayah').classList.add("out");
-
     document.getElementById('audio_ayah').classList.remove("out");
 
 }
@@ -47,12 +46,22 @@ function Audio_Surah() {
     document.getElementById('firstdiv').classList.add("out");
     document.getElementById('seconddiv').classList.add("out");
     document.getElementById('audio_ayah').classList.add("out");
+    document.getElementById('main').classList.add("out");
     document.getElementById('citytimes').classList.add("out");
     document.getElementById('thirddiv').classList.add("out");
     document.getElementById('main_for_surah').classList.add("out");
     document.getElementById('audio-ayah').classList.add("out");
-
     document.getElementById('audio-surah').classList.remove("out");
+}
+function Qibla() {
+    document.getElementById('firstdiv').classList.add("out");
+    document.getElementById('main').classList.remove("out");
+    document.getElementById('seconddiv').classList.add("out");
+    document.getElementById('audio_ayah').classList.add("out");
+    document.getElementById('citytimes').classList.add("out");
+    document.getElementById('thirddiv').classList.add("out");
+    document.getElementById('main_for_surah').classList.add("out");
+    document.getElementById('audio-ayah').classList.add("out");
 }
 function Times() {
 
@@ -73,9 +82,9 @@ function Times() {
             document.getElementById('esha').innerHTML = response.data.data.timings.Isha;
         }
         )
-        document.getElementById('citytimes').classList.remove("out");
-        inp_ut1.value = "";
-        inp_ut2.value = "";
+    document.getElementById('citytimes').classList.remove("out");
+    inp_ut1.value = "";
+    inp_ut2.value = "";
 }
 function HijriCalendar() {
     document.getElementById('thirddiv').classList.remove("out");
@@ -195,15 +204,27 @@ function AudioSurah() {
 function direction() {
     let maindiv = document.getElementById('main');
     let qibla_direction = document.getElementById('qiblaimage');
-    axios.get(`http://api.aladhan.com/v1/qibla/25.4106386/51.1846025`)
-            .then(function (response) {
-                console.log(response.data);
-                maindiv.innerHTML = ` <div id="qiblaimage" style="transform: rotate(${response.data.data.direction +"deg"});">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDfwUgPMMXfM3SU6gnjWRL8sxEmXZKqMzeJQ&usqp=CAU" width="50px">
-            </div>`
+    axios.get(`https://api.aladhan.com/v1/qibla/25.4106386/51.1846025`)
+        .then(function (response) {
+            console.log(response.data);
+            qibla_direction.style = `transform: rotate(${response.data.data.direction + "deg"})`;
+            //         maindiv.innerHTML = ` <div id="qiblaimage" style="transform: rotate(${response.data.data.direction +"deg"});">
+            //         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDfwUgPMMXfM3SU6gnjWRL8sxEmXZKqMzeJQ&usqp=CAU" width="50px">
+            //     </div>  <form class="checkbtn">
+            //     <input type="button" class="qiblabtn" onclick="direction()" value="check" />
+            //   </form>`
 
-                   
-}
-)
+
+        }
+        )
+        
 }
 
+function hideloader() {
+    let preloader = document.getElementById('preloader')
+    let afterloader = document.getElementById('afterloader')
+    setTimeout(() => {
+        afterloader.style.display = 'block';
+        preloader.style.display = 'none';
+    },1500)
+}

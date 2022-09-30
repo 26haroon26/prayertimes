@@ -9,30 +9,43 @@
     padding: 0px;
     margin: 0px;
 } */
-body{
+body {
     padding: 0px;
     margin: 0px;
 }
+
 .out {
     display: none;
 }
-.btnsDiv{
+
+.btnsDiv {
     text-align: center;
 }
-.checkbtn{
+
+.checkbtn {
     text-align: center;
 
 }
-#audio-surah,#audio_ayah,#firstdiv,#seconddiv,#show-audio{
+
+#audio-surah,
+#audio_ayah,
+#firstdiv,
+#seconddiv,
+#show-audio {
     text-align: center;
 
 }
-#main{
+
+#main {
     text-align: -webkit-center;
 }
 
 #table_for_calendar {
     margin: 10px auto;
+}
+
+#table_for_calendar::-webkit-scrollbar {
+    display: block;
 }
 
 #table_for_calendar :hover {
@@ -76,9 +89,11 @@ body{
     font-size: medium !important;
     border-radius: 10px;
 }
+
 input,
 .firstbtn,
-#calendar,#prayer_times,
+#calendar,
+#prayer_times,
 #Audio_Ayat,
 #Audio_Surah,
 select {
@@ -90,17 +105,18 @@ select {
     color: black;
 }
 
-#calendar,#prayer_times,
+#calendar,
+#prayer_times,
 #Audio_Ayat,
-#Audio_Surah
- {
+#Audio_Surah {
     margin: 10px auto;
 }
 
-#calendar:hover,#prayer_times:hover,
+#calendar:hover,
+#prayer_times:hover,
 #Audio_Ayat:hover,
 #Audio_Surah:hover,
-input:hover:hover,
+input:hover,.qiblabtn:hover,
 select:hover {
     color: white;
     background-color: #87b3cb;
@@ -108,16 +124,19 @@ select:hover {
     transition: 0.5s;
 }
 
-.flex2 p:hover,.surah_flex p:hover,
-#surahtext >audio:hover,
-#surahtext >p:hover,
-#surahtext >div:hover,
+.flex2 p:hover,
+.surah_flex p:hover,
+#surahtext>audio:hover,
+#surahtext>p:hover,
+#surahtext>div:hover,
 #text:hover,
 #show-audio>audio:hover {
     color: white;
     background-color: #87b3cb;
     transition: 0.5s;
-}h1{
+}
+
+h1 {
     color: white;
 }
 
@@ -146,7 +165,8 @@ select:hover {
     padding: 10px;
 }
 
-.flex2 ,.surah_flex {
+.flex2,
+.surah_flex {
     width: 50%;
     margin: 10px auto;
     display: flex;
@@ -155,7 +175,8 @@ select:hover {
     justify-content: space-evenly;
 }
 
-.flex2>p,.surah_flex>p {
+.flex2>p,
+.surah_flex>p {
     background-color: #FEFE3A;
     width: 150px;
     margin-right: 2%;
@@ -191,26 +212,25 @@ select:hover {
     margin: 10px auto;
 
 }
- /* #show-audio_surah{
-    width: 50%;
-    margin: 10px auto;
-} */
 
-#surahtext{
+#surahtext {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     text-align: center;
     align-items: center;
-}#surahtext >audio{
+}
+
+#surahtext>audio {
     color: black;
     margin-right: 5px;
     border-radius: 10px;
     padding: 2px;
-    background-color: #FEFE3A; 
     width: 220px;
     height: 60px;
-}#surahtext >p {
+}
+
+#surahtext>p {
     margin-right: 5px;
     display: flex;
     height: 60px;
@@ -218,14 +238,16 @@ select:hover {
     padding: 2px;
     border-radius: 10px;
     background-color: #FEFE3A;
-    margin-top: 0px;
     width: 250px;
     justify-content: center;
     align-items: center;
-}  #surahtext > p::-webkit-scrollbar{
+}
+
+#surahtext>p::-webkit-scrollbar {
     display: none;
 }
-#surahtext >div{
+
+#surahtext>div {
     height: 40px;
     border-radius: 50%;
     padding: 2px;
@@ -235,81 +257,165 @@ select:hover {
     justify-content: center;
     align-items: center;
 }
-#qiblaimage{
-    width: 50px;
-    border: 1px solid black;
-    border-radius: 50px;
+
+#qiblaimage>img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid white;
+    border-radius: 50%;
+}.backWhite{
+    width: 150px;
+    height: 150px;
+    padding: 10px;
+    border-radius: 50%;
+  /* background-color: white; */
+  border: 5px dotted white;  
+  margin-bottom: 10px;
 }
-
-/* html,
-body {
-  position: relative;
-  height: 100%;
-}
-
-body {
-  background: #eee;
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  color: #000;
-  margin: 0;
-  padding: 0;
-} */
-
-
-
 
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
 
-  /* Center slide text vertically */
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
 }
 
 .swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
+
 .swiper {
     width: 100%;
-   position: relative; 
+    position: relative;
     height: 100vh;
-  
-  }
-  .swiper-wrapper{
-  z-index: 0 !important;
 
-  }
-  .MainDiv{
+}
+
+.swiper-wrapper {
+    z-index: 0 !important;
+
+}
+
+.MainDiv {
     position: absolute;
     top: 0;
     left: 50%;
     z-index: 1;
     height: 100vh;
-    transform: translate( -50%);
+    transform: translate(-50%);
     width: 70%;
-opacity: 0.9;   
- background-color: #222222;
- overflow-y: scroll;
+    opacity: 0.9;
+    background-color: #222222;
+    overflow-y: scroll;
+}
+
+.MainDiv::-webkit-scrollbar {
+    display: none;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    display: none !important;
+}
+body {
+  background-color: #222;
+}
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+#loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color:yellow;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+#loader:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: yellow;
+    -webkit-animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite;
+}
+#loader:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: rgb(255, 255, 170);
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite;
+}
+@-webkit-keyframes spin {
+    0%   {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
-    .MainDiv::-webkit-scrollbar{
-        display: none;
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
-    .swiper-button-prev,  .swiper-button-next {
-        display:none !important;   
+}
+@keyframes spin {
+    0%   {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+#afterloader{
+    display: none;
+}
+
+
+
+@media screen and (max-width:768px) {
+
+    #surahtext {
+        flex-direction: column-reverse;
+    }
+}
