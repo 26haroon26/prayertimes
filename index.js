@@ -202,22 +202,30 @@ function AudioSurah() {
     showaudiosurah.value = "";
 }
 function direction() {
-    let maindiv = document.getElementById('main');
     let qibla_direction = document.getElementById('qiblaimage');
-    axios.get(`https://api.aladhan.com/v1/qibla/25.4106386/51.1846025`)
+    let latitude;
+    let longitude;
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        alert("Geolocation is not supported by this browser.")
+    }
+
+
+    function showPosition(position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        console.log(latitude);
+        console.log(longitude);
+    }
+    axios.get(`https://api.aladhan.com/v1/qibla/${latitude}/${longitude}`)
         .then(function (response) {
             console.log(response.data);
             qibla_direction.style = `transform: rotate(${response.data.data.direction + "deg"})`;
-            //         maindiv.innerHTML = ` <div id="qiblaimage" style="transform: rotate(${response.data.data.direction +"deg"});">
-            //         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDfwUgPMMXfM3SU6gnjWRL8sxEmXZKqMzeJQ&usqp=CAU" width="50px">
-            //     </div>  <form class="checkbtn">
-            //     <input type="button" class="qiblabtn" onclick="direction()" value="check" />
-            //   </form>`
-
 
         }
         )
-        
+
 }
 
 function hideloader() {
@@ -226,5 +234,5 @@ function hideloader() {
     setTimeout(() => {
         afterloader.style.display = 'block';
         preloader.style.display = 'none';
-    },1500)
+    }, 1500)
 }
